@@ -56,9 +56,21 @@
     .nav-links { display: flex; gap: 32px; list-style: none; }
     .nav-links a {
       text-decoration: none; font-size: .9rem; font-weight: 500;
-      color: var(--metin); transition: color .2s;
+      color: var(--metin);
+      display: inline-flex; flex-direction: column;
+      overflow: hidden; height: 1.2em; line-height: 1.2em;
     }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a span {
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1),
+                  color     0.45s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    .nav-links a span:last-child {
+      color: var(--accent);
+    }
+    .nav-links a:hover span {
+      transform: translateY(-100%);
+    }
     .nav-cta {
       background: var(--accent); color: #fff;
       border: none; border-radius: 50px;
@@ -561,10 +573,10 @@
 <nav>
   <a href="#" class="nav-logo">Davetiye<span>.</span>app</a>
   <ul class="nav-links">
-    <li><a href="#ozellikler">Özellikler</a></li>
-    <li><a href="#nasil-calisir">Nasıl Çalışır?</a></li>
-    <li><a href="#ornekler">Örnekler</a></li>
-    <li><a href="#fiyatlandirma">Fiyatlar</a></li>
+    <li><a href="#ozellikler"><span>Özellikler</span><span>Özellikler</span></a></li>
+    <li><a href="#nasil-calisir"><span>Nasıl Çalışır?</span><span>Nasıl Çalışır?</span></a></li>
+    <li><a href="#ornekler"><span>Örnekler</span><span>Örnekler</span></a></li>
+    <li><a href="#fiyatlandirma"><span>Fiyatlar</span><span>Fiyatlar</span></a></li>
   </ul>
   <a href="#cta" class="nav-cta">Ücretsiz Başla</a>
   <div class="hamburger" onclick="this.classList.toggle('open')">
